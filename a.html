@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<body>
+<button onClick="canvasMove('down');">Down</button>
+<canvas id="game" style="padding-top:200px;background-color:white;" 
+       height="300" width="300" />
+</body>
+<script>
+const canvas = document.getElementById('game');
+const draw = canvas.getContext('2d');
+draw.fillStyle = 'rgba(0,0,0,0.5)';
+draw.fillRect('10', '10', '100', '100');
+
+function canvasMove(direction) {
+    // save the current state of the canvas and then clear the canvas,
+    // which removes any object on your canvas
+    draw.save();        
+    draw.setTransform(1, 0, 0, 1, 0, 0);
+    draw.clearRect(0, 0, canvas.height, canvas.width);  
+    // reverts canvas back to its saved state
+    draw.restore();
+
+    if(direction === 'down') {       
+       draw.translate(0, 10);       
+       draw.fillStyle = 'rgba(0,0,0,0.5)';
+       draw.fillRect('10', '10', '100', '100');
+    }      
+}
+</script>
